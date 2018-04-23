@@ -5,3 +5,4 @@ cscope.*
 .ycm_extra_conf.pyc
 /build
 /obj*
+/build_android
