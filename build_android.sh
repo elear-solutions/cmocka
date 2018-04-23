@@ -1,4 +1,4 @@
-mkdir build_android
+mkdir -p build_android
 cd build_android
 #looping for each complier
 for CC in "/opt/elear-solutions/toolchain_aarch64_v8a_21/bin/aarch64-linux-android-clang" "/opt/elear-solutions/toolchain_armeabi_v7a_19/bin/arm-linux-androideabi-clang" "/opt/elear-solutions/toolchain_x86_19/bin/i686-linux-android-clang" "/opt/elear-solutions/toolchain_x86_64_21/bin/x86_64-linux-android-clang"
@@ -21,7 +21,7 @@ do
   esac
 
   # Generating all the static libs
-  mkdir $MY_OUT_DIR
+  mkdir -p $MY_OUT_DIR
   cd $MY_OUT_DIR
   CC=$CC cmake ../..
   make
