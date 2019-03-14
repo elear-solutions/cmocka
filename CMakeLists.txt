@@ -3,6 +3,12 @@ project(cmocka C)
 # Required cmake version
 cmake_minimum_required(VERSION 2.6.0)
 
+# For backward compatability
+if(EXISTS ${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+  include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+  conan_basic_setup()
+endif()
+
 # global needed variables
 set(APPLICATION_NAME ${PROJECT_NAME})
 
