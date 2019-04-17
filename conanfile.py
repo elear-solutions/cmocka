@@ -1,6 +1,5 @@
 from conans import ConanFile, CMake, tools
 
-
 class cmockalibConan(ConanFile):
     name = "cmocka"
     version = "0.1"
@@ -17,7 +16,7 @@ class cmockalibConan(ConanFile):
     def build(self):
         cmake = CMake(self)
         if (self.settings.os == "Android"):
-            cmake.definitions["Platform"] = "android"
+            cmake.definitions[ "Platform" ] = "android"
         cmake.configure(source_folder=".")
         cmake.build()
 
@@ -26,5 +25,5 @@ class cmockalibConan(ConanFile):
         self.copy("*", dst="lib", src="lib", keep_path=False)
 
     def package_info(self):
-        self.cpp_info.libs = ["cmocka"]
+        self.cpp_info.libs = [ "cmocka" ]
 
