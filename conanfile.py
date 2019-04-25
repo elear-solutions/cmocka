@@ -9,14 +9,14 @@ class cmockalibConan(ConanFile):
     description = "<Description of cmockalib here>"
     topics = ("<Put some tag here>", "<here>", "<and here>")
     settings = "os", "compiler", "build_type", "arch"
-    options = {"shared": [True, False]}
+    options = { "shared": [True, False] }
     default_options = "shared=False"
     generators = "cmake"
 
     def build(self):
         cmake = CMake(self)
         if (self.settings.os == "Android"):
-            cmake.definitions[ "Platform" ] = "android"
+            cmake.definitions["Platform"] = "android"
         cmake.configure(source_folder=".")
         cmake.build()
 
@@ -26,4 +26,3 @@ class cmockalibConan(ConanFile):
 
     def package_info(self):
         self.cpp_info.libs = [ "cmocka" ]
-
