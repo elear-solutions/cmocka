@@ -14,7 +14,7 @@ class cmockalibConan(ConanFile):
     options = {
         "shared": [True, False]
         }
-    default_options {
+    default_options = {
         "shared": False
         }
 
