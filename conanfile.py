@@ -13,14 +13,13 @@ class cmockalibConan(ConanFile):
     generators = "cmake"
     options = {
         "shared": [True, False]
-        }
+    }
     default_options = {
         "shared": False
-        }
+    }
 
     def build(self):
         cmake = CMake(self)
-        cmake.definitions["Platform"] = self.settings.os
         cmake.configure(source_folder=".")
         cmake.build()
 
