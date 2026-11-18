@@ -54,9 +54,10 @@ int __stdcall IsDebuggerPresent();
  * @{
  */
 
-/* If __WORDSIZE is not set, try to figure it out and default to 32 bit. */
+/* If __WORDSIZE is not set, try to figure it out and default to 32 bit.
+ * musl does not define __WORDSIZE. __LP64__ covers aarch64 as well as x86_64. */
 #ifndef __WORDSIZE
-# if defined(__x86_64__) && !defined(__ILP32__)
+# if (defined(__LP64__) || defined(__x86_64__) || defined(__aarch64__)) && !defined(__ILP32__)
 #  define __WORDSIZE 64
 # else
 #  define __WORDSIZE 32
@@ -110,7 +111,7 @@ typedef uintmax_t LargestIntegralType;
     ((LargestIntegralType)(value))
 
 /* Smallest integral type capable of holding a pointer. */
-#if !defined(_UINTPTR_T) && !defined(_UINTPTR_T_DEFINED)
+#if !defined(_UINTPTR_T) && !defined(_UINTPTR_T_DEFINED) && !defined(__DEFINED_uintptr_t)
 # if defined(_WIN32)
     /* WIN32 is an ILP32 platform */
     typedef unsigned int uintptr_t;
